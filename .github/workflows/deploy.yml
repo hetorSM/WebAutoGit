@@ -15,4 +15,5 @@ jobs:
           script: |
             set -e
             cd /var/www/html/WebAutoGit
+            git config --global --add safe.directory /var/www/html/WebAutoGit
             git pull
