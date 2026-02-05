@@ -1,18 +1,16 @@
-name: Deploy Laravel Sail (Remote)
+name: Deploy Laravel Sail (Local)
+
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
+
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Despliegue por SSH
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key:  ${{ secrets.KEY }}
-          script: |
-            set -e
-            cd /var/www/html/WebAutoGit
-            git pull
+      - name: Ir al proyecto y actualizar código
+        run: |
+          set -e
+          cd /home/hector/Escritorio/Despliegue/WebAutoGit
+          git pull origin main
+
